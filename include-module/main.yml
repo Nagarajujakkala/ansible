@@ -1,0 +1,12 @@
+---
+- name: call all child playbooks
+  hosts: all
+  become: yes
+  tasks:
+    - name: call child playbooks
+      include_tasks: "{{item}}"
+      with_items:
+        - child_install.yml
+        - child_start.yml
+        - child_copying.yml
+        - child_restart.yml
