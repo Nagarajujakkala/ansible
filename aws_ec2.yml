@@ -1,0 +1,21 @@
+---
+plugin: amazon.aws.aws_ec2
+regions:
+  - us-east-1
+    #filters:
+  #  tag:Name:
+    #    - node1
+      #add multiple tag names here if required
+
+keyed_groups:
+  # add hosts to tag_Name_value groups for each aws_ec2 host's tags.Name variable.
+  - key: tags.Name
+    prefix: tag_Name_
+    separator: ""
+groups:
+  # add hosts to the group node1 if any of the dictionary's keys or values is the word 'node1'.
+  development: "node1” in (tags|list)"
+filters:
+  tag:Name:
+    - 'node1'
+

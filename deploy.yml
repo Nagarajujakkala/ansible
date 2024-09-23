@@ -1,0 +1,13 @@
+---
+- name: first playbook
+  hosts: tag_Name_node1
+  become: yes
+  tasks:
+    - name: install httpd software
+      yum:
+        name: httpd
+        state: absent
+          # - name: start web server
+          #service:
+          #name: httpd
+          #state: started
